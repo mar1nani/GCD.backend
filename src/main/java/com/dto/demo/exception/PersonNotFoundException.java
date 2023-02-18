@@ -1,4 +1,4 @@
-package com.dto.demo;
+package com.dto.demo.exception;
 
 import java.io.Serializable;
 

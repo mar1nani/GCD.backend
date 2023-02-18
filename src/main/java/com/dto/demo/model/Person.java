@@ -1,21 +1,23 @@
-package com.dto.demo;
+package com.dto.demo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.dto.demo.enums.Gender;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
+@Table(name="person")
 @Entity
-@AllArgsConstructor
-@Builder
-@NoArgsConstructor
-@Table(name = "person")
+@Data
 public class Person {
 	
 	@Id
@@ -28,4 +30,7 @@ public class Person {
     private Gender gender;
     private String phoneNumber;
     private String healthState;
+    
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<Consultation> consultations = new ArrayList<>();
 }
