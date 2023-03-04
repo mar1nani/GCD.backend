@@ -6,7 +6,6 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,7 +39,7 @@ public class Consultation {
 	@JoinColumn(name = "person_id")
 	  private Person person;
 	
-	@OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL)
 	private List<Paiement> paiements = new ArrayList<>();
 	
 }
